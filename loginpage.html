@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Login Page Template</title>
+    <style>
+        html {
+            background-image: url(bg4.jpg);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .body-content {
+     
+            padding-top: 20vh;
+            
+        }
+        
+        .container {
+            width: 350px;
+            height: 450px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+            border: 2px solid rgba(255, 255, 255, 0.39);
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.39);
+        }
+        
+        .logo {
+            margin-bottom: 15px;
+            margin-top: 0px;
+            padding-top: 0;
+        }
+        
+        .logo img {
+            width: 150px;
+            margin: 10px;
+            border-radius: 50px;
+            border:2px solid gray;
+        }
+        
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-item {
+            margin: 5px;
+            padding-bottom: 10px;
+            display: flex;
+        }
+        
+        .form-item label {
+            display: block;
+            padding: 2px;
+            font-size: 20px;
+            width: 100px;
+        }
+        
+        .form-item input {
+            width: 320px;
+            height: 35px;
+            border: 2px solid #1801012c;
+            border-radius: 20px;
+            background: #ffffffe1;
+            color: grey;
+            padding-left: 8px;
+        }
+        
+        .form-btns {
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+            padding: 10px 0;
+        }
+        
+        .form-btns button {
+            margin: auto;
+            font-size: 20px;
+            padding: 5px 15px;
+            border: 2px solid;
+            border-radius: 15px;
+            color: white;
+            background: #0000008c;
+            width: 280px;
+            cursor: pointer;
+        }
+        .form-btns button:hover{
+            
+            background-color: rgba(0, 0, 0, 0.774);
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+            padding: 10px 0;
+        }
+        
+        .options a {
+            text-align: center;
+            margin: auto;
+            font-size: 20px;
+            padding: 5px 15px;
+            border: 2px solid;
+            border-radius: 15px;
+            color: white;
+            background: #0000008c;
+            width: 248px;
+            cursor: pointer;
+            text-decoration: none;
+
+        }
+        .options a:hover {
+            background-color: rgba(0, 0, 0, 0.774);
+ 
+        }
+        
+        p {
+            text-align: center;
+            font-size: 10px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+    
+</head>
+
+<body>
+    
+    <div class="body-content">
+
+        <div class="container">
+            <div class="logo">
+                <img src="logo3.jpg" alt="Company Logo" srcset="">
+            </div>
+            <div class="login-form" id="Registration">
+                    <div class="form-item">
+                        <!-- <label for="userName">Username:</label> -->
+                        <input type="text" name="userName" id="userName" placeholder="Username or Email">
+                    </div>
+                    <div class="form-item">
+                        <!-- <label for="passWord">Password:</label> -->
+                        <input type="password" name="passWord" id="passWord" placeholder="Password">
+                    </div>
+
+                    <div class="form-btns">
+
+                        <div class="options">
+                            <button href="" onclick="login()" ondblclick="login()"  id="login">Login</button>
+                                
+                        </div>
+                        <div class="options">
+                            <a href="signup.html">Sign Up</a>
+                            
+                        </div>
+
+
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.3/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.3/firebase-analytics.js";
+        const firebaseConfig = {
+          apiKey: "AIzaSyDQIhycBX7-j7NQYfFflI31WtevHfjEyRc",
+          authDomain: "webp-bd788.firebaseapp.com",
+          projectId: "webp-bd788",
+          storageBucket: "webp-bd788.appspot.com",
+          messagingSenderId: "759053853062",
+          appId: "1:759053853062:web:d172ff253d348076d0cc07",
+          measurementId: "G-D3S3LH657V"
+        };
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+
+        function RegisterUser(){
+            var userName=document.getElementById("userName").value;
+            var passWord=document.getElementById("passWord").value;
+            firebase.auth().createUserWithEmailAndPassword(userName,passWord).then(function(){
+                alert("login");
+            }).catch(function(error){
+                var errorcode=error.code;
+                var errormsg=error.message;
+            });
+        window.RegisterUser=RegisterUser;
+        }
+      </script>
+    <script src="auth.js"></script>
+</body>
+
+</html>
